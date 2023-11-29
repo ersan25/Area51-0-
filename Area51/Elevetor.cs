@@ -58,8 +58,29 @@ namespace Area51
                 Console.WriteLine("Not moving the elevator is in selected floor!!!!");
                 CheckCredentials( agent, selectedFloor);
             }
+            else
+            {
+                if (currentFloor < agent.AgentFloor)
+                {
+                    for (int i = 0; i <= agent.AgentFloor; i++)
+                    {
+                        currentFloor += i;
+                        Thread.Sleep(1000);
+                    }
+                }
+                if (currentFloor > agent.AgentFloor)
+                {
+                    for (int i = currentFloor; i >= agent.AgentFloor; i--)
+                    {
+                        currentFloor -= i;
+                        Thread.Sleep(1000);
+                    }
+
+                }
+
+            }
         }
-        public void EnterElevator()
+                public void EnterElevator()
         {
             semaphore.WaitOne();
         }
